@@ -1,0 +1,286 @@
+<html>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+<!--FontAwesome CDN-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+<!--Chartjs CDN-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+<style>
+    .graph{
+        visibility: hidden;
+    }
+    .bar{
+        margin-top: -450px;
+    }
+    .line{
+        margin-top: -450px;
+    }
+    .polararea{
+        margin-top: -450px;
+    }
+    .doughnut{
+        margin-top: -450px;
+    }
+    .show{
+        visibility: visible;
+    }
+</style>
+<button class="bt" onclick="fo('pie')">Pie</button>
+<button class="bt" onclick="fo('bar')">Bar</button>
+<button class="bt" onclick="fo('line')">Line</button>
+<button class="bt" onclick="fo('polararea')">Polar Area</button>
+<button class="bt" onclick="fo('doughnut')">Doughnut</button>
+    <canvas id="myChart1" height="100" class="graph pie"></canvas>
+    <canvas id="myChart2" height="100" class="graph bar"></canvas>
+    <canvas id="myChart3" height="100" class="graph line"></canvas>
+    <canvas id="myChart4" height="100" class="graph polararea"></canvas>
+    <canvas id="myChart5" height="100" class="graph doughnut"></canvas>
+    <script>
+        function fo(c) {
+            var x,i;
+            x=document.getElementsByClassName("graph");
+            for(i=0;i<x.length;i++){
+                removeClass(x[i],"show");
+                if(x[i].className.indexOf(c)>-1) addClass(x[i],"show")
+            }
+        }
+        function addClass(element,name){
+            var i,arr1,arr2;
+            arr1=element.className.split(" ");
+            arr2=name.split(" ");
+            for(i=0;i<arr2.length;i++){
+                if (arr1.indexOf(arr2[i])==-1) {
+                    element.className+=" "+arr2[i];
+                }
+            }
+        }
+        function removeClass(element,name){
+            var i,arr1,arr2;
+            arr1=element.className.split(" ");
+            arr2=name.split(" ");
+            for(i=0;i<arr2.length;i++){
+                while (arr1.indexOf(arr2[i])>-1) {
+                    arr1.splice(arr1.indexOf(arr2[i],1));
+                }
+            }
+            element.className=arr1.join(" ");
+        }
+    </script>
+    <script type="text/javascript">
+        var ctx = document.getElementById('myChart1').getContext('2d');
+    var myChart1 = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: [{% for loc in loc %} '{{ loc }}', {% endfor %}],
+            datasets: [{
+                label:"Animals",
+                data: [{% for number in loca_c %} '{{ number }}', {% endfor %}],
+                backgroundColor:[
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 135, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(151, 102, 132, 1)',
+                ],
+
+                borderColor: [
+                'rgb(0,0,0)',
+                'rgb(0,0,0)',
+                'rgb(0,0,0)',
+                'rgb(0,0,0)',
+                'rgb(0,0,0)',
+                'rgb(0,0,0)',
+
+                ],
+
+                borderWidth: 1
+            }]
+        },
+
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    })
+</script>        
+    <script type="text/javascript">
+        var ctx = document.getElementById('myChart2').getContext('2d');
+    var myChart1 = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [{% for loc in loc %} '{{ loc }}', {% endfor %}],
+            datasets: [{
+                label:"Animals",
+                data: [{% for number in loca_c %} '{{ number }}', {% endfor %}],
+                backgroundColor:[
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 135, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(151, 102, 132, 1)',
+                ],
+
+                borderColor: [
+                'rgb(0,0,0)',
+                'rgb(0,0,0)',
+                'rgb(0,0,0)',
+                'rgb(0,0,0)',
+                'rgb(0,0,0)',
+                'rgb(0,0,0)',
+
+                ],
+
+                borderWidth: 1
+            }]
+        },
+
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    })
+</script>        
+    <script type="text/javascript">
+        var ctx = document.getElementById('myChart3').getContext('2d');
+    var myChart1 = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [{% for loc in loc %} '{{ loc }}', {% endfor %}],
+            datasets: [{
+                label:"Animals",
+                data: [{% for number in loca_c %} '{{ number }}', {% endfor %}],
+                backgroundColor:[
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 135, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(151, 102, 132, 1)',
+                ],
+
+                borderColor: [
+                'rgb(0,0,0)',
+                'rgb(0,0,0)',
+                'rgb(0,0,0)',
+                'rgb(0,0,0)',
+                'rgb(0,0,0)',
+                'rgb(0,0,0)',
+
+                ],
+
+                borderWidth: 1
+            }]
+        },
+
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    })
+</script>        
+    <script type="text/javascript">
+        var ctx = document.getElementById('myChart4').getContext('2d');
+    var myChart1 = new Chart(ctx, {
+        type: 'polarArea',
+        data: {
+            labels: [{% for loc in loc %} '{{ loc }}', {% endfor %}],
+            datasets: [{
+                label:"Animals",
+                data: [{% for number in loca_c %} '{{ number }}', {% endfor %}],
+                backgroundColor:[
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 135, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(151, 102, 132, 1)',
+                ],
+
+                borderColor: [
+                'rgb(0,0,0)',
+                'rgb(0,0,0)',
+                'rgb(0,0,0)',
+                'rgb(0,0,0)',
+                'rgb(0,0,0)',
+                'rgb(0,0,0)',
+
+                ],
+
+                borderWidth: 1
+            }]
+        },
+
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    })
+</script>        
+    <script type="text/javascript">
+        var ctx = document.getElementById('myChart5').getContext('2d');
+    var myChart1 = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: [{% for loc in loc %} '{{ loc }}', {% endfor %}],
+            datasets: [{
+                label:"Animals",
+                data: [{% for number in loca_c %} '{{ number }}', {% endfor %}],
+                backgroundColor:[
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 135, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(151, 102, 132, 1)',
+                ],
+
+                borderColor: [
+                'rgb(0,0,0)',
+                'rgb(0,0,0)',
+                'rgb(0,0,0)',
+                'rgb(0,0,0)',
+                'rgb(0,0,0)',
+                'rgb(0,0,0)',
+
+                ],
+
+                borderWidth: 1
+            }]
+        },
+
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    })
+</script>        
+        </html>
