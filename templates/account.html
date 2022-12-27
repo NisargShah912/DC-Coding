@@ -1,0 +1,107 @@
+<html>
+<head>
+    <title>Your Profile</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    body{
+        margin: 0;
+    }
+    .premiumbtn , .premiumbtn a{
+        position: relative;
+        display: inline;
+        vertical-align: middle;
+        padding: 0 45px;
+        font-weight: 900;
+        font-size: 28px;
+        font-family: "Comic Sans MS";
+        color: white;
+    }.nav{
+         background-color: #004aad;
+         padding-left: 50px ;
+         display: inline;
+         color: white;
+     }h2.nav-tit{
+          display: inline;
+          vertical-align: middle;
+          font-weight: 900;
+          font-family: Algerian;
+          font-size: 38px;
+          color: white;
+      }.containepr{
+           background-color: #004aad;
+           padding: 20px;
+       }nav{
+            margin: 0;
+            background: #004aad;
+        }.premiumbtn a{
+             position: relative;
+             display: inline;
+             vertical-align: middle;
+             font-weight: 900;
+             padding: 0 0;
+             font-size: 28px;
+             font-family: "Comic Sans MS";
+             color: white;
+             text-decoration: none;
+         }.premiumbtn:hover a:hover , a.active{
+              color: black;
+              background: #03bbf7;
+              padding: 5px;
+          }.heading{
+        display: inline;
+        font-weight: 900;
+        font-size: 45px;
+        font-family: "Cooper Black";
+        line-height: 1.5;
+}.box , p{
+        display: inline;
+        font-size: 25px;
+        font-family: "Comic Sans MS";
+}.profdet{
+        background: rgba(0,0,0,0.1);
+        padding: 20px;
+        width: 50%;
+        margin-top: 20px;
+        text-align: left;
+        padding-top: 0;
+                                                               }
+ h1{
+     font-size: 60px;
+     font-family: "Permanent Marker";
+ }
+ a , .btn{
+     font-family: Verdana;
+     font-weight: 900;
+     font-size: 30px;
+ }
+</style>
+<body>
+<center>
+<div class="profdet">
+    {% for nameo in names %}
+    <h1>Profile Details</h1>
+    <div class="usna"><p class="heading"> Username : </p>
+        <div class="box">
+    <p>{{nameo.name}}</p>
+        </div>
+    </div>
+    <div class="email"><p class="heading"> Email : </p>
+        <div class="box">
+        <p>{{nameo.email}}</p>
+        </div>
+    </div>
+    <div class="usna"><p class="heading"> Password : </p>
+        <div class="box">
+        <p>{{nameo.password}}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</center>
+<center>
+    <a href="logout" class="btn btn-danger" role="button" aria-disabled="true"><i class="fas fa-power-off"></i> Logout</a>
+</center>
+</body>
+</html>
