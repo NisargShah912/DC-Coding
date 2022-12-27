@@ -95,17 +95,20 @@ def contact(request):
     else:
         return render(request,'login.html')
 def graph(request):
-    yes=int(qrcode.objects.filter(extinct="Yes").count())
-    no=int(qrcode.objects.filter(extinct="No").count())
-    africa=int(qrcode.objects.filter(location="Africa").count())
-    aisa=int(qrcode.objects.filter(location="Asia").count())
-    aus=int(qrcode.objects.filter(location="Australia").count())
-    ant=int(qrcode.objects.filter(location="Antarctica").count())
-    amazon=int(qrcode.objects.filter(location="Amazon Jungle").count())
-    america=int(qrcode.objects.filter(location="America").count())
-    loca=["Amazon Jungle","Africa","Asia","Australia","Antarctica","America"]
-    loca_c=[amazon,africa,aisa,aus,ant,america]
-    yesno=["Yes","No"]
-    yesno_c=[yes,no]
-    context={"yesno":yesno,"yesno_c":yesno_c,"loc":loca,"loca_c":loca_c}
-    return render(request,'graph.html',context)
+    if log==True:
+        yes=int(qrcode.objects.filter(extinct="Yes").count())
+        no=int(qrcode.objects.filter(extinct="No").count())
+        africa=int(qrcode.objects.filter(location="Africa").count())
+        aisa=int(qrcode.objects.filter(location="Asia").count())
+        aus=int(qrcode.objects.filter(location="Australia").count())
+        ant=int(qrcode.objects.filter(location="Antarctica").count())
+        amazon=int(qrcode.objects.filter(location="Amazon Jungle").count())
+        america=int(qrcode.objects.filter(location="America").count())
+        loca=["Amazon Jungle","Africa","Asia","Australia","Antarctica","America"]
+        loca_c=[amazon,africa,aisa,aus,ant,america]
+        yesno=["Yes","No"]
+        yesno_c=[yes,no]
+        context={"yesno":yesno,"yesno_c":yesno_c,"loc":loca,"loca_c":loca_c}
+        return render(request,'graph.html',context)
+    else:
+        return render(request,'login.html')
